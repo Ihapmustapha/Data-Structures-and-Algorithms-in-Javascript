@@ -62,34 +62,62 @@ class MySet {
         })
         return intersectionSet
     }
+    // returns difference of two sets
+    difference(otherSet) {
+        let differenceSet = new MySet();
+        let firstSet = this.values();
+        firstSet.forEach(element => {
+            if(!otherSet.has(element)) differenceSet.add(element);
+        })
+        return differenceSet;
+    }
+    // tests if the second set is a subset of the first
+    // every() checks if all of the array elements pass the test
+    isSubset(otherSet) {
+        let firstSet = this.values();
+        return firstSet.every((element) => {
+            return otherSet.has(element);
+        })
+
+    }
 }
 
 
 
 /*************Tests**************/
-let testSet = new MySet(); 
-testSet.add(1);
-testSet.add(2);
-testSet.add(3);
-testSet.add(5);
+let setA = new MySet(); 
+setA.add(1);
+setA.add(2);
+setA.add(3);
+setA.add(4);
+setA.add(5);
 
-let secondTestSet = new MySet();
-secondTestSet.add(2);
-secondTestSet.add(4);
-secondTestSet.add(5);
+let setB = new MySet();
+setB.add(3);
+setB.add(4);
+setB.add(5);
+setB.add(6);
+setB.add(7);
+setB.add(8);
 
-console.log(testSet.values());
-console.log(secondTestSet.values());
-let unionSet = testSet.union(secondTestSet);
+console.log(setA.values());
+console.log(setB.values());
+
+let unionSet = setA.union(setB);
 console.log(unionSet.collection);
-let intersectionSet = testSet.intersection(secondTestSet);
+
+let intersectionSet = setA.intersection(setB);
 console.log(intersectionSet.collection);
 
-// console.log(testSet.size());
-// testSet.add(4);
-// console.log(testSet.size());
-// testSet.remove(3);
-// console.log(testSet.size());
+let differenceSet = setA.difference(setB);
+console.log(differenceSet.collection);
+
+console.log(setA.isSubset(setB) ? "is a subset" : "is not a subset");
+// console.log(setA.size());
+// setA.add(4);
+// console.log(setA.size());
+// setA.remove(3);
+// console.log(setA.size());
 
 
 
