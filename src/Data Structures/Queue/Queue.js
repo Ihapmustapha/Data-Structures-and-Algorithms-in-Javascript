@@ -41,8 +41,9 @@ q.enqueue(3);
 q.enqueue(4);
 q.enqueue(5);
 q.print();
+console.log("Queue front: " + q.front());
 
-console.log(q.size());
+console.log("Queue size: " + q.size());
 
 console.log(q.dequeue());
 console.log(q.dequeue());
@@ -51,7 +52,7 @@ console.log(q.dequeue());
 
 console.log(q.isEmpty());
 
-console.log(q.dequeue());
-console.log(q.dequeue());
-console.log(q.dequeue());
-console.log(q.dequeue());
+q.dequeue();
+q.dequeue();
+q.dequeue();
+q.dequeue();
