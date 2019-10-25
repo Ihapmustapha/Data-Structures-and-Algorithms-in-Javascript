@@ -1,3 +1,4 @@
+// O(N)
 function search(array, seekElement) {
     let found = [];
     array.forEach((element, index) => {
