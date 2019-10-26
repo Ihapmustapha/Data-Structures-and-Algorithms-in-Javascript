@@ -15,7 +15,10 @@ function sort(array) {
 
 
 /***************Tests***************/
-console.log(sort([2,69,5,12,0,7,44,120,3,98]));
+// console.log(sort([2,69,5,12,0,7,44,120,3,98]));
+let data = Array.apply(null, {length: 100000}).map(Function.call, Math.random);
+
+console.log(sort(data));
 
 
 
