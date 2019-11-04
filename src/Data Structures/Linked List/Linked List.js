@@ -1,4 +1,12 @@
-import Node from "./Node";
+// import Node from "./Node";
+
+class Node {
+    constructor(value, next = null) {
+        this.value = value;
+        this.next = next;
+    }
+} 
+
 
 class LinkedList {
     constructor() {
@@ -21,7 +29,7 @@ class LinkedList {
             this.head = node;
         } 
         else {
-            let currentNode = head; 
+            let currentNode = this.head; 
             while(currentNode.next) {
                 currentNode = currentNode.next;
             }
@@ -31,10 +39,10 @@ class LinkedList {
     }
     // Searchs and remove the element from the list
     remove(element) {
-        var currentNode = head;
+        var currentNode = this.head;
         var previousNode;
         if(currentNode.element === element){
-            head = currentNode.next;
+            this.head = currentNode.next;
         } else {
         while(currentNode.element !== element) {
             previousNode = currentNode;
@@ -44,53 +52,52 @@ class LinkedList {
         previousNode.next = currentNode.next;
     }
 
-        length --;
+        this.length --;
     }
     // checks if linked list is empty
     isEmpty() {
-        return length === 0;
+        return this.length === 0;
     }
     // returns index of item
-    indexOf() {
-        var currentNode = head;
-    var index = -1;
+    indexOf(element) {
+        var currentNode = this.head;
+        var index = -1;
 
-    while(currentNode){
-        index++;
-        if(currentNode.element === element){
-            return index;
+        while(currentNode){
+            index++;
+            if(currentNode.element === element){
+                return index;
+            }
+            currentNode = currentNode.next;
         }
-        currentNode = currentNode.next;
-    }
 
-    return -1;
-  };
+        return -1;
+    };
     // returns element at specific index
-    elementAt() {
-        var currentNode = head;
-    var count = 0;
-    while (count < index){
-        count ++;
-        currentNode = currentNode.next
-    }
-    return currentNode.element;
+    elementAt(index) {
+        var currentNode = this.head;
+        var count = 0;
+        while (count < index){
+            count ++;
+            currentNode = currentNode.next
+        }
+        return currentNode.element;
     }
     // add element at specific index
     addAt() {
         var node = new Node(element);
+        var currentNode = this.head;
+        var previousNode;
+        var currentIndex = 0;
 
-    var currentNode = head;
-    var previousNode;
-    var currentIndex = 0;
-
-    if(index > length){
+        if(index > this.length){
         return false;
-    }
+        }
 
-    if(index === 0){
-        node.next = currentNode;
-        head = node;
-    } else {
+        if(index === 0){
+            node.next = currentNode;
+            this.head = node;
+        } else {
         while(currentIndex < index){
             currentIndex++;
             previousNode = currentNode;
@@ -98,31 +105,31 @@ class LinkedList {
         }
         node.next = currentNode;
         previousNode.next = node;
-    }
-    length++;
+        }
+        this.length++;
     }
     // removes element at specific index
-    removeAt() {
-        var currentNode = head;
-    var previousNode;
-    var currentIndex = 0;
-    if (index < 0 || index >= length){
-        return null
-    }
-    if(index === 0){
-        head = currentNode.next;
-    } else {
+    removeAt(index) {
+        var currentNode = this.head;
+        var previousNode;
+        var currentIndex = 0;
+        if (index < 0 || index >= this.length){
+            return null;
+        }
+        if(index === 0){
+            this.head = currentNode.next;
+        } else {
         while(currentIndex < index) {
             currentIndex ++;
             previousNode = currentNode;
             currentNode = currentNode.next;
         }
         previousNode.next = currentNode.next
+        }
+        this.length--;
+        return currentNode.element;
     }
-    length--;
-    return currentNode.element;
-  }
-    }
+}
 
 
 /********************Tests*************************/
