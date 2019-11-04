@@ -18,8 +18,8 @@ class LinkedList {
         return this.length;
     }
     // getting head of linkedlist
-    head() {
-        return this.head;
+    getHead() {
+        return this.head.value;
     }
     // adding new node to linkedlist
     // O(N)
@@ -41,10 +41,10 @@ class LinkedList {
     remove(element) {
         var currentNode = this.head;
         var previousNode;
-        if(currentNode.element === element){
+        if(currentNode.value === element){
             this.head = currentNode.next;
         } else {
-        while(currentNode.element !== element) {
+        while(currentNode.value !== element) {
             previousNode = currentNode;
             currentNode = currentNode.next;
         }
@@ -81,10 +81,10 @@ class LinkedList {
             count ++;
             currentNode = currentNode.next
         }
-        return currentNode.element;
+        return currentNode;
     }
     // add element at specific index
-    addAt() {
+    addAt(index) {
         var node = new Node(element);
         var currentNode = this.head;
         var previousNode;
@@ -133,14 +133,15 @@ class LinkedList {
 
 
 /********************Tests*************************/
-let conga = new LinkedList();
-conga.add('Kitten');
-conga.add('Puppy');
-conga.add('Dog');
-conga.add('Cat');
-conga.add('Fish');
-console.log(conga.size());
-console.log(conga.removeAt(3));
-console.log(conga.elementAt(3));
-console.log(conga.indexOf('Puppy'));
-console.log(conga.size());
+let myLinkedList = new LinkedList();
+myLinkedList.add("kitten");
+myLinkedList.add("puppy");
+myLinkedList.add("dog");
+myLinkedList.add("cat");
+myLinkedList.add("fish");
+console.log(myLinkedList.getHead());
+console.log(myLinkedList.size());
+myLinkedList.remove("kitten");
+console.log(myLinkedList.getHead());
+myLinkedList.removeAt(3);
+console.log(myLinkedList.elementAt(3));
